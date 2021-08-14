@@ -1,16 +1,64 @@
 # yata_e_ticket
 
-e-ticket
+Yata E-Ticket
 
-## Getting Started
+## Detail
 
-This project is a starting point for a Flutter application.
+屋台のあるお祭りでは現金決済を NG とし、専用のチケットを使っていることがとても多い。
 
-A few resources to get you started if this is your first Flutter project:
+これは、各屋台がお釣りを用意したりする手間を省いたり、チケットによって購買が促進されるという狙いからである。（知らんけど）
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+でもまぁ、紙を用意して配るのもなかなか大変。
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+払い戻しの対応も、チケットの販売も大変。
+
+最近は各屋台が PayPay などの電決済に対応しているケースもあるが、顧客全員が PayPay なわけもなく、現金は併用。
+
+PayPay は手数料もかかるので屋台みたいな単発の売り上げにとってはちょっと痛い出費。
+
+そんなときに使えるのが Yata-E-Ticket だ！
+
+Yata-E-Ticket では、来場客すべてにアプリのインストールをお願いする。
+
+アカウントを作ってもらう
+
+アカウントページにはバーコードがあり、これが入場チケットになる。
+
+感染症対策の観点からも、来場者の動きを把握できて万々歳だ。
+
+各ユーザーは事前にアプリ内課金によって E-Ticket を購入できる。
+
+アプリ内課金は Apple を経由するとガッツリ持っていかれるので、Stripe を使う。
+
+Stripe の手数料は人件費などもろもろのメリットでペイできると期待したい。
+
+もちろん払い戻しについても Stripe で実現できる。
+
+チケットはアカウントに紐づけて管理される
+
+このアプリには販売店側機能も用意されている。
+
+購入のやりとりはカードゲームのトレードのようなやりとりで実現する。
+
+1. 顧客側で使用するチケット枚数を選択してもらう。
+2. 取引用コードが発行される。
+3. 取引用コードを販売店側機能で読み取る。
+4. 販売店側はチケットが増えることになる。
+5. 最後に販売店側は払い戻し機能で売り上げを立てる。
+
+このアプリを導入することによって、チケットのやりとり以外に以下の展開が考えられる。
+
+- お祭りの屋台の地図を配布
+- 屋台の商品に関する在庫情報
+- 屋台の混雑状況などを発信するタイムライン機能
+- タイムセール
+- 特定の複数店舗での購入によるスタンプラリー特典
+
+加えて以下の観点でも有効である
+
+- 顧客の訪問ルートのデータ取り
+- 時間帯・客層（年練・性別など）による販売データの取得
+
+## Conclusion
+
+素晴らしいアイディアだよ
