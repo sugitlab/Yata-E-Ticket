@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Shop extends StatelessWidget {
   const Shop({Key? key}) : super(key: key);
@@ -13,13 +14,15 @@ class Shop extends StatelessWidget {
               height: 150,
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 32, vertical: 8),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
                     child: TextField(
-                      obscureText: true,
+                      style: GoogleFonts.getFont('Roboto'),
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         labelText: 'Search',
+                        labelStyle: GoogleFonts.getFont('Roboto'),
                       ),
                     ),
                   ),
