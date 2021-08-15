@@ -10,7 +10,7 @@ class Shop extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 200,
+              height: 150,
               child: Column(
                 children: [
                   const Padding(
@@ -24,7 +24,8 @@ class Shop extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     child: Row(
                       children: const [
                         Padding(
