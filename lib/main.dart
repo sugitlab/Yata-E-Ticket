@@ -3,6 +3,8 @@ import 'package:flip_card/flip_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './view/my_ticket.dart';
 import './view/use_ticket.dart';
+import './view/news.dart';
+import './view/shop.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,33 +44,42 @@ class _MyHomePage extends State<MyHomePage> {
   }
 
   List<Widget> pages = [
-    const Center(
-      child: Text('shop page'),
-    ),
+    const Shop(),
     const Center(
       child: FlipCard(
         front: MyTicket(),
         back: UseTicket(),
       ),
     ),
-    const Center(
-      child: Text('news page'),
-    ),
+    const News(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text(
-          'Yata E-Ticket',
-          style: GoogleFonts.teko(
-            textStyle: const TextStyle(fontSize: 48, color: Colors.grey),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            'Yata E-Ticket',
+            style: GoogleFonts.teko(
+              textStyle: const TextStyle(fontSize: 48, color: Colors.grey),
+            ),
           ),
-        ),
-      ),
+          leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.menu, color: Colors.grey),
+          ),
+          actions: const [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: CircleAvatar(
+                radius: 28,
+                backgroundImage: NetworkImage(
+                    'https://pbs.twimg.com/profile_images/1261278455842271232/4TQJWEPG_400x400.jpg'),
+              ),
+            ),
+          ]),
       body: pages[currentPage],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onBnbTapped,
