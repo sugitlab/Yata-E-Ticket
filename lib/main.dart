@@ -26,8 +26,36 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  _MyHomePage createState() => _MyHomePage();
+}
+
+class _MyHomePage extends State<MyHomePage> {
+  int currentPage = 1;
+  void _onBnbTapped(int index) {
+    setState(() {
+      currentPage = index;
+    });
+  }
+
+  List<Widget> pages = [
+    const Center(
+      child: Text('shop page'),
+    ),
+    const Center(
+      child: FlipCard(
+        front: MyTicket(),
+        back: UseTicket(),
+      ),
+    ),
+    const Center(
+      child: Text('news page'),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,14 +69,10 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: const Center(
-        child: FlipCard(
-          front: MyTicket(),
-          back: UseTicket(),
-        ),
-      ),
+      body: pages[currentPage],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
+        onTap: _onBnbTapped,
+        currentIndex: currentPage,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.shop),

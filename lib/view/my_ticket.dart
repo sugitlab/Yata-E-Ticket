@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
+import './pay.dart';
 
-class MyTicket extends StatelessWidget {
+class MyTicket extends StatefulWidget {
   const MyTicket({Key? key}) : super(key: key);
+
+  @override
+  _MyTicket createState() => _MyTicket();
+}
+
+class _MyTicket extends State<MyTicket> {
+  int count = 0;
+  int youhave = 12;
+
+  void increment() {
+    if (count < youhave) {
+      setState(() {
+        count++;
+      });
+    }
+  }
+
+  void decrement() {
+    if (count > 0) {
+      setState(() {
+        count--;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +57,16 @@ class MyTicket extends StatelessWidget {
                         '+',
                         style: TextStyle(fontSize: 36),
                       ),
-                      onPressed: () {},
+                      onPressed: count == youhave
+                          ? null
+                          : () {
+                              increment();
+                            },
                     ),
                   ),
-                  const Text(
-                    '5 Tickets',
-                    style: TextStyle(fontSize: 18),
+                  Text(
+                    '$count Tickets',
+                    style: const TextStyle(fontSize: 18),
                   ),
                   SizedBox(
                     width: 80,
@@ -46,7 +75,11 @@ class MyTicket extends StatelessWidget {
                         '-',
                         style: TextStyle(fontSize: 36),
                       ),
-                      onPressed: () {},
+                      onPressed: count == 0
+                          ? null
+                          : () {
+                              decrement();
+                            },
                     ),
                   ),
                 ],
@@ -61,7 +94,7 @@ class MyTicket extends StatelessWidget {
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                       TextSpan(
-                        text: '12',
+                        text: (youhave - count).toString(),
                         style: TextStyle(
                             fontSize: 28,
                             color: Theme.of(context).primaryColor),
@@ -77,7 +110,15 @@ class MyTicket extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const Pay();
+                        },
+                      ),
+                    );
+                  },
                   child: const Text(
                     'PAY',
                     style: TextStyle(fontSize: 32),

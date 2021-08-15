@@ -30,7 +30,13 @@ class UseTicket extends StatelessWidget {
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
                     return const ListTile(
+                      leading: Icon(Icons.fastfood),
                       title: Text('たこやき'),
+                      trailing: Text(
+                        '2 Tickets',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      subtitle: Text('2021/08/14 15:00'),
                     );
                   },
                 ),
